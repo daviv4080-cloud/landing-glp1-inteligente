@@ -207,6 +207,24 @@
   .hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
   @media (max-width:960px){.hero-actions{justify-content:center;}}
 
+  .hero-bullets{
+    list-style:none;padding:0;margin:0 0 34px;display:grid;gap:10px;max-width:520px;
+  }
+  @media (max-width:960px){.hero-bullets{margin-left:auto;margin-right:auto;text-align:left;}}
+  .hero-bullets li{
+    font-size:14.5px;color:var(--ink-soft);display:flex;gap:10px;align-items:flex-start;
+  }
+  .hero-bullets li::before{
+    content:"";flex:0 0 6px;width:6px;height:6px;border-radius:50%;
+    background:var(--primary);margin-top:8px;
+  }
+  .hero-bullets li strong{color:var(--ink);font-weight:700;}
+
+  .hero-microcopy{
+    font-size:13px;color:var(--ink-faint);margin:14px 0 0;
+  }
+  @media (max-width:960px){.hero-microcopy{text-align:center;}}
+
   .trust-row{
     display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;
   }
@@ -391,6 +409,73 @@
     font-size:14px;
   }
   .imagine-visual{display:flex;justify-content:center;align-items:center;}
+
+  /* ---------- Antes x Depois ---------- */
+  .ad-grid{
+    display:grid;grid-template-columns:1fr auto 1fr;gap:24px;
+    align-items:stretch;margin-top:44px;max-width:900px;margin-left:auto;margin-right:auto;
+  }
+  @media (max-width:768px){.ad-grid{grid-template-columns:1fr;}}
+  .ad-card{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius-card);
+    padding:28px 26px;text-align:left;
+  }
+  .ad-card.ad-before{border-color:var(--line);}
+  .ad-card.ad-after{border:2px solid var(--primary);box-shadow:var(--shadow-card);}
+  .ad-tag{
+    font-family:var(--font-mono);font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;
+    display:inline-block;margin-bottom:16px;padding:4px 12px;border-radius:100px;
+  }
+  .ad-before .ad-tag{background:var(--bg-alt);color:var(--ink-faint);}
+  .ad-after .ad-tag{background:var(--primary);color:#fff;}
+  .ad-card ul{list-style:none;padding:0;margin:0;display:grid;gap:12px;}
+  .ad-card li{font-size:14.5px;color:var(--ink-soft);padding-left:20px;position:relative;}
+  .ad-before li::before{content:"–";position:absolute;left:0;color:var(--ink-faint);}
+  .ad-after li{color:var(--ink);}
+  .ad-after li::before{content:"✓";position:absolute;left:0;color:var(--primary);font-weight:700;}
+  .ad-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--primary);}
+  @media (max-width:768px){.ad-arrow{transform:rotate(90deg);margin:-8px 0;}}
+
+  /* ---------- Not just an ebook ---------- */
+  .system-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;
+  }
+  @media (max-width:768px){.system-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.system-grid{grid-template-columns:1fr;}}
+  .system-item{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:16px;
+    padding:26px 22px;text-align:left;transition:transform .25s var(--ease);
+  }
+  .system-item:hover{transform:translateY(-4px);}
+  .system-item .si-icon{font-size:26px;display:block;margin-bottom:12px;}
+  .system-item h4{font-size:16.5px;margin:0 0 6px;}
+  .system-item p{font-size:13.5px;color:var(--ink-soft);margin:0;}
+
+  /* ---------- Chapters ---------- */
+  .chapters-list{max-width:720px;margin:44px auto 0;display:grid;gap:4px;}
+  .chapter-item{
+    display:flex;gap:20px;align-items:flex-start;padding:18px 4px;border-bottom:1px solid var(--line);
+    text-align:left;
+  }
+  .chapter-item .ch-num{
+    font-family:var(--font-mono);font-size:14px;color:var(--primary);font-weight:700;flex:0 0 32px;
+  }
+  .chapter-item h4{font-size:15.5px;margin:0 0 4px;}
+  .chapter-item p{font-size:13.5px;color:var(--ink-soft);margin:0;}
+
+  /* ---------- Price anchoring table ---------- */
+  .price-table{
+    width:100%;max-width:520px;margin:40px auto 0;border-collapse:collapse;
+    background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius-card);overflow:hidden;
+  }
+  .price-table td{padding:14px 22px;font-size:14.5px;color:var(--ink-soft);border-bottom:1px solid var(--line);text-align:left;}
+  .price-table td:last-child{text-align:right;font-family:var(--font-mono);color:var(--ink-faint);text-decoration:line-through;}
+  .price-table tr.pt-total td{
+    border-bottom:none;font-weight:700;color:var(--ink);background:var(--bg-alt);
+  }
+  .price-table tr.pt-total td:last-child{text-decoration:none;color:var(--ink);}
+  .pt-final{font-size:16px;color:var(--ink);margin:24px 0 28px;}
+  .pt-final strong{color:var(--primary);font-family:var(--font-mono);}
 
   /* ---------- Checklist (offer) ---------- */
   .offer-intro{max-width:700px;margin:0 auto 44px;text-align:center;}
@@ -714,16 +799,27 @@
   </div>
 
   <!-- HERO -->
+  <!-- SUGESTÃO DE PRODUÇÃO: no lugar do mockup CSS abaixo, ideal usar um print real e limpo da área de membros (dashboard) com o planner da semana visível, sobreposto por dois cards flutuantes: um mostrando "Proteína hoje: 92g" e outro com o gráfico da semana organizada. Evitar qualquer imagem de aplicação de medicamento ou balança/peso. -->
   <div class="hero wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">Para quem já iniciou o tratamento com GLP-1</span>
+        <span class="eyebrow">Para quem já iniciou o tratamento com GLP-1 (Mounjaro, Wegovy, Ozempic e similares)</span>
         <h1>Sua rotina alimentar não precisa ser mais uma incógnita nessa fase do tratamento</h1>
-        <p class="sub">O Programa GLP-1 Inteligente organiza sua alimentação, sua proteína e seus hábitos do dia a dia — para você atravessar o tratamento com mais clareza e menos dúvida na hora da refeição.</p>
+        <p class="sub">O Programa GLP-1 Inteligente é o sistema que organiza sua alimentação, sua proteína e seus hábitos do dia a dia — criado porque a consulta médica não tem tempo de resolver isso na prática, e você não deveria precisar descobrir tudo sozinha(o).</p>
+
+        <ul class="hero-bullets">
+          <li><strong>Para quem é:</strong> quem já iniciou o tratamento e sente falta de um roteiro prático pro dia a dia.</li>
+          <li><strong>O que resolve:</strong> a dúvida diária de "o que comer" e a insegurança sobre proteína e rotina.</li>
+          <li><strong>O que você recebe:</strong> cardápios, planner, tracker, calculadora e uma área de membros — tudo pronto.</li>
+          <li><strong>Por que é diferente:</strong> feito especificamente pra quem usa GLP-1, não é um material genérico de dieta.</li>
+        </ul>
+
         <div class="hero-actions">
-          <a href="#oferta" class="btn btn-primary">Quero organizar minha rotina</a>
-          <a href="#calculadora" class="btn btn-ghost">Ver uma ferramenta do programa</a>
+          <a href="#oferta" class="btn btn-primary">Quero organizar minha rotina hoje</a>
+          <a href="#calculadora" class="btn btn-ghost">Testar uma ferramenta grátis</a>
         </div>
+        <p class="hero-microcopy">Acesso imediato · a partir de R$ 19,90 · garantia de 7 dias</p>
+
         <div class="trust-row">
           <span>Não substitui seu médico</span>
           <span>Sem promessa de emagrecimento</span>
@@ -765,44 +861,58 @@
     <div class="pillar"><span>04</span> Comunidade</div>
   </div>
 
+  <!-- STORYTELLING -->
+  <section style="padding-bottom:0;">
+    <div class="wrap reveal" style="max-width:680px;text-align:center;">
+      <span class="kicker">Uma situação comum</span>
+      <p class="lede lg" style="font-family:var(--font-display);font-size:22px;line-height:1.5;color:var(--ink);">
+        Você começa o tratamento com uma expectativa clara na cabeça.<br>
+        Nos primeiros dias, o apetite muda — e junto com ele, vem uma pergunta simples que ninguém respondeu direito na consulta:<br><br>
+        <strong>"E agora, o que eu como?"</strong><br><br>
+        <span style="color:var(--ink-soft);font-size:18px;font-weight:400;">Sem uma resposta prática pra isso, cada refeição vira uma decisão. E depois de um tempo, decidir três vezes por dia o que preparar cansa mais do que parece.</span>
+      </p>
+    </div>
+  </section>
+
   <!-- PAIN POINTS -->
   <section>
     <div class="wrap reveal">
       <span class="kicker">O que ninguém te explica direito</span>
       <h2>Começar o tratamento muda sua relação com a comida — e quase ninguém te dá um mapa para isso</h2>
-      <p class="lede lg">O apetite muda, as porções mudam, e de repente surgem dúvidas do dia a dia que a consulta médica não tem tempo de cobrir em detalhe.</p>
+      <p class="lede lg">São situações pequenas do dia a dia, mas que se acumulam — e a consulta médica raramente tem tempo pra cobrir em detalhe.</p>
       <div class="pain-grid">
         <div class="pain-card">
           <span class="mark">Rotina</span>
-          <h4>"O que eu preparo hoje?"</h4>
-          <p>Sem apetite e sem roteiro, cada refeição vira uma decisão cansativa.</p>
+          <h4>"Já são 19h e eu ainda não sei o que vou comer"</h4>
+          <p>Sem apetite e sem roteiro pronto, a hora da refeição vira um problema a resolver — todos os dias, de novo.</p>
         </div>
         <div class="pain-card">
           <span class="mark">Proteína</span>
-          <h4>"Será que estou comendo o suficiente?"</h4>
-          <p>A insegurança sobre a ingestão de proteína vira uma preocupação constante.</p>
+          <h4>"Será que hoje eu comi proteína suficiente?"</h4>
+          <p>Sem conseguir comer grandes quantidades, bate a dúvida se o pouco que você comeu foi bem escolhido.</p>
         </div>
         <div class="pain-card">
           <span class="mark">Sintomas</span>
-          <h4>"Hoje não consigo comer quase nada"</h4>
-          <p>Nos dias de mais náusea, faltam opções simples e prontas para recorrer.</p>
+          <h4>"Hoje o enjoo não deixa nem pensar em cozinhar"</h4>
+          <p>Nos dias mais difíceis, falta uma lista de opções simples e leves pra recorrer sem esforço.</p>
         </div>
         <div class="pain-card">
           <span class="mark">Organização</span>
-          <h4>"Eu preciso de um sistema, não de força de vontade"</h4>
-          <p>Sem planner, sem lista de compras, sem checklist — tudo depende de lembrar na hora.</p>
+          <h4>"Eu sei que preciso me organizar, só não sei por onde começar"</h4>
+          <p>Sem planner, sem lista de compras, sem checklist — tudo fica dependendo da sua memória e disposição do dia.</p>
         </div>
       </div>
     </div>
 
     <div class="cta-strip reveal">
       <div class="cs-text">
-        <h3>Reconheceu alguma dessas situações?</h3>
-        <p>O Guia Essencial foi feito exatamente para elas.</p>
+        <h3>Se alguma dessas frases pareceu familiar...</h3>
+        <p>O Guia Essencial foi montado para resolver exatamente isso.</p>
       </div>
-      <a href="#oferta" class="btn btn-primary btn-sm">Conhecer o programa</a>
+      <a href="#oferta" class="btn btn-primary btn-sm">Quero resolver isso agora</a>
     </div>
   </section>
+
 
   <!-- POSITIONING -->
   <section class="section-alt">
@@ -818,20 +928,22 @@
     <div class="wrap reveal" style="text-align:center;">
       <span class="kicker">O que você recebe</span>
       <h2 class="center">Um sistema completo, não apenas um PDF</h2>
-      <p class="lede lg center">Cada ferramenta foi pensada para tirar uma decisão difícil da sua cabeça e colocar no papel — ou na tela.</p>
+      <p class="lede lg center">Cada ferramenta existe para tirar uma decisão difícil da sua cabeça e colocar no papel — ou na tela. Veja o que cada uma resolve na prática.</p>
 
       <div class="mockup-grid">
+        <!-- SUGESTÃO DE PRODUÇÃO: print real da capa/página aberta do e-book, mostrando um cardápio diagramado -->
         <div class="mockup-card">
           <span class="mc-label">E-book interativo</span>
           <h4>Guia Essencial</h4>
-          <p>Cardápios, estratégias e orientações organizadas por fase do tratamento.</p>
+          <p>É a base de tudo: cardápios, estratégias e orientações organizadas por fase do tratamento. Existe porque decidir o que comer, todos os dias, sem referência nenhuma, é o que mais cansa no início. Na prática: você abre, escolhe uma opção pronta e segue em frente.</p>
           <div class="mockup-visual"><div class="book-mock">GLP-1<br>Inteligente</div></div>
         </div>
 
+        <!-- SUGESTÃO DE PRODUÇÃO: print do planner semanal preenchido, com refeições e checks marcados -->
         <div class="mockup-card">
           <span class="mc-label">Planner semanal</span>
           <h4>Sua semana, organizada</h4>
-          <p>Refeições e tarefas do dia distribuídas — sem precisar decidir na hora.</p>
+          <p>Um espaço simples pra distribuir as refeições da semana com antecedência. Existe porque decidir "no calor da hora" é o que mais gera ansiedade e escolhas ruins. Na prática: aos domingos você preenche uma vez, e a semana toda já está resolvida.</p>
           <div class="mockup-visual">
             <div class="planner-mock">
               <span class="done">✓</span><span class="done">✓</span><span class="done">✓</span><span>4</span>
@@ -840,10 +952,11 @@
           </div>
         </div>
 
+        <!-- SUGESTÃO DE PRODUÇÃO: print do tracker preenchido com datas de aplicação, sintomas e medidas registrados -->
         <div class="mockup-card">
           <span class="mc-label">Tracker diário</span>
           <h4>Acompanhamento simples</h4>
-          <p>Aplicações, sintomas, peso e medidas em um único lugar.</p>
+          <p>Um registro rápido de aplicações, sintomas, peso e medidas em um único lugar. Existe porque essas informações se perdem na memória — e fazem falta na próxima consulta. Na prática: você preenche em segundos e leva tudo organizado pro seu médico.</p>
           <div class="mockup-visual">
             <div class="tracker-mock">
               <i style="height:40%"></i><i style="height:65%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:60%"></i><i style="height:70%"></i>
@@ -851,10 +964,11 @@
           </div>
         </div>
 
+        <!-- SUGESTÃO DE PRODUÇÃO: print real da tela da área de membros (dashboard com menu lateral e conteúdo do módulo atual) -->
         <div class="mockup-card">
           <span class="mc-label">Área de membros</span>
           <h4>Tudo em um só lugar</h4>
-          <p>Acesse cardápios, ferramentas e atualizações direto da plataforma.</p>
+          <p>Uma plataforma onde cardápios, ferramentas e atualizações ficam sempre à mão. Existe porque ninguém quer procurar arquivo em pasta de e-mail. Na prática: você entra, encontra tudo organizado por fase, sem se perder.</p>
           <div class="mockup-visual">
             <div class="browser-mock">
               <div class="chrome"><span></span><span></span><span></span></div>
@@ -866,10 +980,11 @@
           </div>
         </div>
 
+        <!-- SUGESTÃO DE PRODUÇÃO: print/GIF da calculadora em uso: campo de peso preenchido + resultado aparecendo -->
         <div class="mockup-card">
           <span class="mc-label">Calculadora</span>
           <h4>Proteína sob controle</h4>
-          <p>Estimativa de ingestão diária a partir do seu peso e nível de atividade.</p>
+          <p>Uma estimativa de ingestão diária de proteína a partir do seu peso e nível de atividade. Existe porque "coma mais proteína" sem um número de referência não ajuda ninguém. Na prática: você digita o peso e já sabe a faixa que faz sentido buscar no dia.</p>
           <div class="mockup-visual">
             <div class="calc-mock-vis">
               <div class="row"><div></div><div></div></div>
@@ -878,10 +993,11 @@
           </div>
         </div>
 
+        <!-- SUGESTÃO DE PRODUÇÃO: foto/print de uma receita aberta, com ingredientes e modo de preparo visíveis -->
         <div class="mockup-card">
           <span class="mc-label">Receitas express</span>
           <h4>Prontas em minutos</h4>
-          <p>Opções rápidas para os dias de pouco apetite ou pouco tempo.</p>
+          <p>Opções rápidas para os dias de pouco apetite ou pouco tempo. Existem porque nos dias difíceis, cozinhar uma receita complicada é a última coisa que você quer fazer. Na prática: poucos ingredientes, poucos passos, pronto em até 10 minutos.</p>
           <div class="mockup-visual">
             <div class="recipe-mock"><div></div><div></div><div></div></div>
           </div>
@@ -894,9 +1010,10 @@
         <h3>Todas essas ferramentas já estão prontas para você</h3>
         <p>Sem precisar montar nada do zero.</p>
       </div>
-      <a href="#oferta" class="btn btn-primary btn-sm">Quero acessar</a>
+      <a href="#oferta" class="btn btn-primary btn-sm">Quero essas ferramentas agora</a>
     </div>
   </section>
+
 
   <!-- JOURNEY -->
   <section class="section-alt">
@@ -999,6 +1116,100 @@
     </div>
   </section>
 
+  <!-- ANTES X DEPOIS (rotina, sem corpo/peso) -->
+  <section class="section-alt">
+    <div class="wrap reveal" style="text-align:center;">
+      <span class="kicker">A diferença está na rotina</span>
+      <h2 class="center">Antes e depois de organizar a rotina alimentar</h2>
+      <p class="lede lg center">Aqui a transformação não é no corpo — é em como o seu dia a dia com o tratamento funciona.</p>
+
+      <div class="ad-grid">
+        <div class="ad-card ad-before">
+          <span class="ad-tag">Antes</span>
+          <ul>
+            <li>Decide o que comer na hora, sem plano</li>
+            <li>Não sabe se está comendo proteína suficiente</li>
+            <li>Nos dias de náusea, não sabe o que preparar</li>
+            <li>Datas de aplicação e sintomas ficam só na memória</li>
+            <li>Sensação de estar "se virando" sozinho(a)</li>
+          </ul>
+        </div>
+        <div class="ad-arrow">→</div>
+        <div class="ad-card ad-after">
+          <span class="ad-tag">Depois</span>
+          <ul>
+            <li>Cardápio da semana já está pronto e decidido</li>
+            <li>Sabe exatamente a faixa de proteína que busca no dia</li>
+            <li>Tem uma lista de opções simples pros dias difíceis</li>
+            <li>Tudo registrado num só lugar, pronto pra consulta</li>
+            <li>Sensação de ter um sistema apoiando a rotina</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOCÊ NÃO ESTÁ COMPRANDO UM EBOOK -->
+  <section>
+    <div class="wrap reveal" style="text-align:center;">
+      <span class="kicker">Deixa a gente ser direto com você</span>
+      <h2 class="center">Você não está comprando um e-book</h2>
+      <p class="lede lg center">Um PDF sozinho não muda rotina nenhuma. Por isso o programa foi montado como um sistema — com várias peças que se conectam.</p>
+
+      <div class="system-grid">
+        <div class="system-item"><span class="si-icon">🧩</span><h4>Sistema</h4><p>Cardápio, lista de compras, planner e tracker funcionando juntos, não isolados.</p></div>
+        <div class="system-item"><span class="si-icon">📐</span><h4>Método</h4><p>Uma sequência lógica pra seguir — não uma pilha de informação solta.</p></div>
+        <div class="system-item"><span class="si-icon">🛠️</span><h4>Ferramentas</h4><p>Calculadora, checklist e área de membros prontos pra usar no dia a dia.</p></div>
+        <div class="system-item"><span class="si-icon">🗂️</span><h4>Organização</h4><p>Tudo no seu lugar — sem precisar montar planilha ou caderno do zero.</p></div>
+        <div class="system-item"><span class="si-icon">📊</span><h4>Acompanhamento</h4><p>Registros simples que te ajudam a levar informação organizada pro seu médico.</p></div>
+        <div class="system-item"><span class="si-icon">🔁</span><h4>Rotina</h4><p>O objetivo final: uma rotina que se sustenta, fase após fase do tratamento.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO DO GUIA (capítulos) -->
+  <section class="section-alt">
+    <div class="wrap reveal">
+      <span class="kicker">Por dentro do material</span>
+      <h2 class="center">O que tem em cada parte do Guia Essencial</h2>
+      <p class="lede lg center" style="margin-left:auto;margin-right:auto;">Organizado em capítulos, do começo do tratamento até a fase de consistência.</p>
+
+      <div class="chapters-list">
+        <div class="chapter-item"><span class="ch-num">01</span><div><h4>Primeiros passos com GLP-1</h4><p>O que muda no apetite e na rotina alimentar logo no início.</p></div></div>
+        <div class="chapter-item"><span class="ch-num">02</span><div><h4>Proteína na prática</h4><p>Como calcular e distribuir a proteína ao longo do dia, mesmo comendo pouco.</p></div></div>
+        <div class="chapter-item"><span class="ch-num">03</span><div><h4>30 cardápios prontos</h4><p>Opções para cada refeição, pensadas para pouco apetite.</p></div></div>
+        <div class="chapter-item"><span class="ch-num">04</span><div><h4>Lista de compras completa</h4><p>O que ter em casa pra não improvisar na hora da fome.</p></div></div>
+        <div class="chapter-item"><span class="ch-num">05</span><div><h4>Refeições prontas (mercado e delivery)</h4><p>Opções práticas para os dias sem tempo ou disposição de cozinhar.</p></div></div>
+        <div class="chapter-item"><span class="ch-num">06</span><div><h4>Lidando com náusea e baixa fome</h4><p>Estratégias alimentares para os dias mais difíceis.</p></div></div>
+        <div class="chapter-item"><span class="ch-num">07</span><div><h4>Planner semanal e checklist diário</h4><p>Como usar os dois juntos para nunca começar o dia sem plano.</p></div></div>
+        <div class="chapter-item"><span class="ch-num">08</span><div><h4>Tracker de aplicações e sintomas</h4><p>O que registrar e por que isso ajuda nas suas consultas.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANCORAGEM DE PREÇO -->
+  <section>
+    <div class="wrap reveal" style="text-align:center;">
+      <span class="kicker">Quanto custaria montar isso sozinho</span>
+      <h2 class="center">Se você fosse montar cada peça separadamente</h2>
+      <p class="lede lg center">Veja o que está incluso no Guia Essencial — e quanto custaria reunir tudo isso por conta própria.</p>
+
+      <table class="price-table">
+        <tbody>
+          <tr><td>30 cardápios ricos em proteína</td><td>R$ 39</td></tr>
+          <tr><td>Lista de compras completa</td><td>R$ 15</td></tr>
+          <tr><td>Planner semanal + checklist diário</td><td>R$ 27</td></tr>
+          <tr><td>Tracker de aplicações e sintomas</td><td>R$ 22</td></tr>
+          <tr><td>Calculadora de ingestão de proteínas</td><td>R$ 19</td></tr>
+          <tr><td>Acesso à área de membros</td><td>R$ 25</td></tr>
+          <tr class="pt-total"><td>Valor se comprado em partes</td><td>R$ 147</td></tr>
+        </tbody>
+      </table>
+      <p class="pt-final">Hoje, tudo isso sai por <strong>R$ 19,90</strong> — ou <strong>R$ 47,90</strong> no plano completo, com as receitas express incluídas.</p>
+      <a href="#oferta" class="btn btn-primary">Quero garantir esse valor</a>
+    </div>
+  </section>
+
   <!-- OFFER: GUIA ESSENCIAL -->
   <section id="oferta">
     <div class="wrap reveal">
@@ -1037,7 +1248,7 @@
             <li>Tracker de aplicações e diário de sintomas</li>
             <li>Calculadora de ingestão de proteínas</li>
           </ul>
-          <a href="#" class="btn btn-ghost">Quero este plano</a>
+          <a href="#" class="btn btn-ghost">Começar pelo básico</a>
           <p class="fine">Acesso via plataforma digital.</p>
         </div>
 
@@ -1087,6 +1298,7 @@
     </div>
   </section>
 
+  <!-- SUGESTÃO DE PRODUÇÃO: nesta seção, os melhores locais para reforçar prova social real são: (1) print de conversa/avaliação do cliente ao lado de cada card de depoimento, (2) um vídeo curto (15-30s) de depoimento em destaque no topo da seção, (3) prints reais do planner/tracker preenchidos pelos próprios clientes. Evitar qualquer imagem de balança, antes/depois corporal ou aplicação de medicamento. -->
   <!-- DEPOIMENTOS -->
   <section>
     <div class="wrap reveal" style="text-align:center;">
@@ -1182,7 +1394,7 @@
         <h3>Quer fazer parte dessa lista?</h3>
         <p>Comece agora pelo Guia Essencial.</p>
       </div>
-      <a href="#oferta" class="btn btn-primary btn-sm">Quero começar</a>
+      <a href="#oferta" class="btn btn-primary btn-sm">Quero minha rotina organizada também</a>
     </div>
   </section>
 
@@ -1205,6 +1417,7 @@
     </div>
   </section>
 
+  <!-- SUGESTÃO DE PRODUÇÃO: substituir o avatar-placeholder por foto profissional real do responsável técnico, com CRN/CRM verdadeiro. Isso reforça autoridade de forma verificável (essencial para conformidade e para confiança do visitante). -->
   <!-- AUTHORITY -->
   <section>
     <div class="wrap reveal" style="text-align:center;">
@@ -1294,6 +1507,42 @@
       <div class="faq-item">
         <h4>O conteúdo é atualizado?</h4>
         <p>O material passa por revisões periódicas para manter a qualidade e a relevância das informações.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Funciona especificamente para Ozempic, Mounjaro e Wegovy?</h4>
+        <p>Sim. O foco é a organização alimentar comum a esse tipo de tratamento, independente do nome comercial do medicamento usado.</p>
+      </div>
+      <div class="faq-item">
+        <h4>O material é digital ou físico?</h4>
+        <p>100% digital. Você acessa pela área de membros, direto do computador ou celular, sem precisar de envio ou frete.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Quais formas de pagamento são aceitas?</h4>
+        <p>Cartão de crédito, PIX e boleto, conforme disponibilidade da plataforma de pagamento no momento da compra.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Existe garantia? Como funciona o reembolso?</h4>
+        <p>Sim, garantia incondicional de 7 dias a partir da compra. Basta solicitar dentro do prazo pelo canal de suporte para receber 100% do valor de volta.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Em quanto tempo minha rotina fica mais organizada?</h4>
+        <p>Isso varia de pessoa para pessoa. O material entrega o sistema pronto desde o primeiro acesso — o ritmo de adaptação à rotina depende de cada um.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Funciona para vegetarianos ou veganos?</h4>
+        <p>Os cardápios têm foco em proteína de forma geral. Recomendamos adaptar as opções e validar com seu nutricionista conforme sua restrição.</p>
+      </div>
+      <div class="faq-item">
+        <h4>E se eu tiver muito pouco apetite e não conseguir seguir os cardápios?</h4>
+        <p>O material traz opções pensadas justamente para baixa ingestão. Ainda assim, qualquer dificuldade persistente deve ser conversada com seu médico.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Posso usar em qualquer fase do tratamento?</h4>
+        <p>Sim. O conteúdo cobre desde o início até a fase de consistência e manutenção da rotina.</p>
+      </div>
+      <div class="faq-item">
+        <h4>O acesso à área de membros expira?</h4>
+        <p>Não. Após a confirmação da compra, o acesso permanece disponível na plataforma.</p>
       </div>
     </div>
   </section>
