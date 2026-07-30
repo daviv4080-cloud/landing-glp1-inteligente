@@ -120,10 +120,7 @@
 
   /* ============ Mockups (o que recebe) ============ */
   .mockup-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;}
-  .mockup-card{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow-soft);}
-  .mockup-card h4{font-size:13px;margin:10px 0 1px;}
-  .mockup-card p{font-size:11.5px;color:var(--ink-soft);margin:0;}
-  .mockup-visual{border-radius:9px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;min-height:84px;overflow:hidden;padding:8px;}
+  .mockup-grid img{width:100%;border-radius:14px;box-shadow:var(--shadow-soft);}
 
   /* ============ Depoimentos ============ */
   .testi-grid{display:grid;grid-template-columns:1fr;gap:10px;max-width:440px;margin:20px auto 0;}
@@ -287,77 +284,10 @@
       <h2 class="center">Tudo pronto pra você seguir</h2>
 
       <div class="mockup-grid">
-        <div class="mockup-card">
-          <div class="mockup-visual">
-            <svg viewBox="0 0 120 90" width="86" height="64">
-              <path d="M60 20 C50 12 30 10 15 14 V70 C30 66 50 68 60 76 C70 68 90 66 105 70 V14 C90 10 70 12 60 20Z" fill="#FFFFFF" stroke="#2F5D53" stroke-width="2.5"/>
-              <line x1="60" y1="20" x2="60" y2="76" stroke="#DBE3D8" stroke-width="2"/>
-              <line x1="24" y1="28" x2="50" y2="26" stroke="#4A8577" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="24" y1="38" x2="46" y2="36" stroke="#DBE3D8" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="24" y1="48" x2="48" y2="46" stroke="#DBE3D8" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="70" y1="28" x2="96" y2="26" stroke="#4A8577" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="70" y1="38" x2="92" y2="36" stroke="#DBE3D8" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="70" y1="48" x2="94" y2="46" stroke="#DBE3D8" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h4>30 cardápios</h4>
-          <p>Ricos em proteína, fáceis de seguir.</p>
-        </div>
-
-        <div class="mockup-card">
-          <div class="mockup-visual">
-            <svg viewBox="0 0 120 100" width="86" height="72">
-              <rect x="14" y="18" width="92" height="74" rx="8" fill="#FFFFFF" stroke="#2F5D53" stroke-width="2.5"/>
-              <rect x="14" y="18" width="92" height="18" rx="8" fill="#2F5D53"/>
-              <rect x="30" y="8" width="6" height="16" rx="3" fill="#2F5D53"/>
-              <rect x="84" y="8" width="6" height="16" rx="3" fill="#2F5D53"/>
-              <g fill="none" stroke="#DBE3D8" stroke-width="1.5">
-                <rect x="24" y="44" width="16" height="16" rx="3"/>
-                <rect x="80" y="44" width="16" height="16" rx="3"/>
-                <rect x="24" y="68" width="16" height="16" rx="3"/>
-                <rect x="52" y="68" width="16" height="16" rx="3"/>
-                <rect x="80" y="68" width="16" height="16" rx="3"/>
-              </g>
-              <rect x="24" y="44" width="16" height="16" rx="3" fill="#4A8577"/>
-              <rect x="52" y="44" width="16" height="16" rx="3" fill="#4A8577"/>
-              <path d="M27 52 l4 4 l7 -8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M55 52 l4 4 l7 -8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h4>Planner semanal</h4>
-          <p>Sua semana organizada de vez.</p>
-        </div>
-
-        <div class="mockup-card">
-          <div class="mockup-visual">
-            <svg viewBox="0 0 120 100" width="86" height="72">
-              <rect x="10" y="10" width="100" height="80" rx="14" fill="#FFFFFF" stroke="#2F5D53" stroke-width="2.5"/>
-              <path d="M30 65 A30 30 0 0 1 90 65" fill="none" stroke="#DBE3D8" stroke-width="8" stroke-linecap="round"/>
-              <path d="M30 65 A30 30 0 0 1 70 38" fill="none" stroke="#4A8577" stroke-width="8" stroke-linecap="round"/>
-              <line x1="60" y1="65" x2="75" y2="45" stroke="#2F5D53" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="60" cy="65" r="4" fill="#2F5D53"/>
-              <text x="60" y="82" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#2F5D53" font-weight="600">g/dia</text>
-            </svg>
-          </div>
-          <h4>Calculadora de proteína</h4>
-          <p>Peso no campo, meta na hora.</p>
-        </div>
-
-        <div class="mockup-card">
-          <div class="mockup-visual">
-            <svg viewBox="0 0 120 100" width="86" height="72">
-              <rect x="10" y="14" width="100" height="72" rx="10" fill="#FFFFFF" stroke="#2F5D53" stroke-width="2.5"/>
-              <polyline points="22,68 40,58 58,64 76,42 96,34" fill="none" stroke="#4A8577" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="22" cy="68" r="3.5" fill="#2F5D53"/>
-              <circle cx="40" cy="58" r="3.5" fill="#2F5D53"/>
-              <circle cx="58" cy="64" r="3.5" fill="#2F5D53"/>
-              <circle cx="76" cy="42" r="3.5" fill="#2F5D53"/>
-              <circle cx="96" cy="34" r="3.5" fill="#2F5D53"/>
-            </svg>
-          </div>
-          <h4>Tracker diário</h4>
-          <p>Aplicações e sintomas num só lugar.</p>
-        </div>
+        <img src="images/cardapios.jpg" alt="30 cardápios ricos em proteína, fáceis de seguir">
+        <img src="images/planner.jpg" alt="Planner semanal — sua semana organizada de vez">
+        <img src="images/calculadora.jpg" alt="Calculadora de proteína — peso no campo, meta na hora">
+        <img src="images/tracker.jpg" alt="Tracker diário — aplicações e sintomas num só lugar">
       </div>
       <a href="#oferta" class="mini-cta">Quero acesso a tudo isso</a>
     </div>
