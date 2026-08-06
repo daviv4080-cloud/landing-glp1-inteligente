@@ -132,7 +132,7 @@
   .mini-cta::after{content:" →";}
 
   /* ============ HERO ============ */
-  .hero{padding:36px 0 26px;position:relative;}
+  .hero{padding:32px 0 24px;position:relative;}
   .hero::before{
     content:"";position:absolute;top:-60px;left:50%;transform:translateX(-50%);
     width:900px;height:500px;max-width:160vw;
@@ -145,29 +145,46 @@
   .eyebrow{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--primary);background:rgba(47,93,83,0.08);border:1px solid rgba(47,93,83,0.18);padding:5px 12px;border-radius:100px;margin-bottom:14px;}
   .hero h1{max-width:460px;margin:0 auto 10px;}
   @media (min-width:960px){.hero h1{margin-left:0;}}
-  .hero p.sub{font-size:15.5px;color:var(--ink-soft);max-width:380px;margin:0 auto 22px;}
+  .hero p.sub{font-size:15.5px;color:var(--ink-soft);max-width:380px;margin:0 auto 18px;}
   @media (min-width:960px){.hero p.sub{margin-left:0;}}
+
+  .hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 22px;}
+  @media (min-width:960px){.hero-tags{justify-content:flex-start;}}
+  .hero-tags span{font-size:12px;background:var(--bg-card);border:1px solid var(--line);padding:6px 12px;border-radius:100px;color:var(--ink);white-space:nowrap;}
+  .hero-tags span::before{content:"✓ ";color:var(--primary);font-weight:700;}
+
   .hero-actions{max-width:300px;margin:0 auto;}
   @media (min-width:960px){.hero-actions{max-width:none;margin:0;}}
-  .hero-microcopy{font-size:11.5px;color:var(--ink-faint);margin:10px 0 0;text-align:center;}
-  @media (min-width:960px){.hero-microcopy{text-align:left;}}
+  @keyframes pulse-glow-hero{0%,100%{box-shadow:0 6px 18px rgba(47,93,83,0.30);}50%{box-shadow:0 10px 28px rgba(47,93,83,0.46);}}
+  .hero-actions .btn-primary{font-size:16.5px;padding:17px 30px;animation:pulse-glow-hero 3s ease-in-out infinite;}
+  .hero-actions .btn-primary:hover{animation-play-state:paused;}
+
+  /* Shared device-frame look, reused by mobile-compact and desktop-collage mockups */
+  .device-frame{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+  .device-frame .chrome{background:var(--bg-alt);padding:8px 10px;display:flex;gap:5px;}
+  .device-frame .chrome span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);opacity:.5;}
+  .device-frame .body{padding:16px;display:grid;gap:8px;}
+  .device-frame .body .line{height:8px;border-radius:4px;background:var(--bg-alt);}
+  .device-frame .body .line.w60{width:60%;background:var(--primary);opacity:.55;}
+  .device-frame .body .card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;}
+  .device-frame .body .card-row div{height:38px;border-radius:7px;background:var(--bg-alt);}
+  .device-frame .footer-badge{padding:10px 16px 14px;font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);border-top:1px solid var(--line);}
+  .device-frame .footer-badge strong{color:var(--primary);font-size:15px;}
+  @keyframes float-main{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+  /* Compact mockup — visible on mobile too, so the product is always front and center */
+  .hero-visual-mobile{margin-top:6px;max-width:300px;margin-left:auto;margin-right:auto;box-shadow:var(--shadow-lift);border-radius:16px;animation:float-main 6s ease-in-out infinite;}
+  @media (min-width:960px){.hero-visual-mobile{display:none;}}
 
   .hero-visual{display:none;}
   @media (min-width:960px){
-    .hero-visual{display:block;position:relative;height:280px;}
+    .hero-visual{display:block;position:relative;height:300px;}
     .hero-visual::after{
       content:"";position:absolute;left:8%;right:22%;bottom:2px;height:24px;
       background:radial-gradient(ellipse at center, rgba(30,43,40,0.18), transparent 72%);
       filter:blur(8px);z-index:0;
     }
-    .hv-main{position:absolute;top:6px;left:0;right:28px;bottom:28px;background:var(--bg-card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lift);overflow:hidden;animation:float-main 6s ease-in-out infinite;z-index:1;}
-    .hv-main .chrome{background:var(--bg-alt);padding:8px 10px;display:flex;gap:5px;}
-    .hv-main .chrome span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);opacity:.5;}
-    .hv-main .body{padding:16px;display:grid;gap:8px;}
-    .hv-main .body .line{height:8px;border-radius:4px;background:var(--bg-alt);}
-    .hv-main .body .line.w60{width:60%;background:var(--primary);opacity:.55;}
-    .hv-main .body .card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;}
-    .hv-main .body .card-row div{height:38px;border-radius:7px;background:var(--bg-alt);}
+    .hv-main{position:absolute;top:2px;left:0;right:22px;bottom:22px;box-shadow:var(--shadow-lift);animation:float-main 6s ease-in-out infinite;z-index:1;}
     .hv-float{position:absolute;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-lift);padding:12px;z-index:1;}
     .hv-float.f1{top:-6px;right:0;width:126px;animation:float-1 5s ease-in-out infinite;}
     .hv-float.f2{bottom:-12px;left:16px;width:146px;animation:float-2 5.6s ease-in-out infinite;}
@@ -175,7 +192,6 @@
     .hv-float .fv{font-family:var(--font-mono);font-size:18px;font-weight:600;}
     .hv-float .fbars{display:flex;align-items:flex-end;gap:3px;height:24px;margin-top:5px;}
     .hv-float .fbars i{flex:1;background:linear-gradient(180deg,var(--primary-light),var(--primary));border-radius:3px 3px 0 0;}
-    @keyframes float-main{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
     @keyframes float-1{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-9px) rotate(-2deg);}}
     @keyframes float-2{0%,100%{transform:translateY(0) rotate(2deg);}50%{transform:translateY(9px) rotate(2deg);}}
   }
@@ -326,14 +342,31 @@
         <h1>Você não precisa saber o que fazer. Só precisa alguém te dizendo.</h1>
         <p class="sub">Um guia pra essas primeiras semanas. Sem pesquisar todo dia. Sem estudar nutrição.</p>
 
+        <div class="hero-tags">
+          <span>Sem decisão diária</span>
+          <span>Resposta pronta</span>
+          <span>Sem pesquisar</span>
+          <span>Mais leveza</span>
+        </div>
+
         <div class="hero-actions">
           <a href="#oferta" class="btn btn-primary btn-block">Quero essa tranquilidade</a>
         </div>
-        <p class="hero-microcopy">A partir de R$ 14,90 · acesso na hora · garantia de 7 dias</p>
+
+        <!-- Mockup compacto — visível também no mobile -->
+        <div class="hero-visual-mobile device-frame">
+          <div class="chrome"><span></span><span></span><span></span></div>
+          <div class="body">
+            <div class="line w60"></div>
+            <div class="line" style="width:85%"></div>
+            <div class="card-row"><div></div><div></div><div></div></div>
+          </div>
+          <div class="footer-badge">Proteína hoje: <strong>92g</strong></div>
+        </div>
       </div>
 
       <div class="hero-visual">
-        <div class="hv-main">
+        <div class="hv-main device-frame">
           <div class="chrome"><span></span><span></span><span></span></div>
           <div class="body">
             <div class="line w60"></div>
@@ -441,6 +474,7 @@
     <div class="wrap reveal center-wrap">
       <span class="kicker">Guia Essencial</span>
       <h2 class="center">Tudo pra essas primeiras semanas</h2>
+      <p style="font-size:12px;color:var(--ink-faint);margin:0 0 4px;">Acesso na hora · Garantia de 7 dias</p>
       <ul class="checklist-mini">
         <li>30 cardápios prontos</li>
         <li>Lista de compras completa</li>
