@@ -4,8 +4,73 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programa GLP-1 Inteligente</title>
+<meta name="description" content="Um guia pra essas primeiras semanas. Sem pesquisar todo dia. Sem estudar nutrição.">
+<meta name="theme-color" content="#2F5D53">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://daviv4080-cloud.github.io/landing-glp1-inteligente/">
+
+<meta property="og:type" content="product">
+<meta property="og:title" content="Programa GLP-1 Inteligente">
+<meta property="og:description" content="Você não precisa saber o que fazer. Só precisa alguém te dizendo. Um guia pra essas primeiras semanas.">
+<meta property="og:image" content="https://daviv4080-cloud.github.io/landing-glp1-inteligente/images/cardapios.jpg">
+<meta property="og:url" content="https://daviv4080-cloud.github.io/landing-glp1-inteligente/">
+<meta property="og:locale" content="pt_BR">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Programa GLP-1 Inteligente">
+<meta name="twitter:description" content="Você não precisa saber o que fazer. Só precisa alguém te dizendo.">
+<meta name="twitter:image" content="https://daviv4080-cloud.github.io/landing-glp1-inteligente/images/cardapios.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Guia Essencial — Programa GLP-1 Inteligente",
+  "description": "Um guia pra essas primeiras semanas. Sem pesquisar todo dia. Sem estudar nutrição.",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Guia Essencial",
+      "price": "19.90",
+      "priceCurrency": "BRL",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "Guia Essencial + Receitas Express",
+      "price": "47.90",
+      "priceCurrency": "BRL",
+      "availability": "https://schema.org/InStock"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Isso substitui meu médico?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. É educativo — o tratamento continua com seu médico." }
+    },
+    {
+      "@type": "Question",
+      "name": "Promete emagrecimento?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. O foco é organizar sua alimentação e rotina." }
+    },
+    {
+      "@type": "Question",
+      "name": "Funciona pra qualquer GLP-1?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim, pensado pra quem usa Ozempic, Mounjaro, Wegovy ou similar." }
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --bg: #F5F7F2;
@@ -36,6 +101,7 @@
   img,svg{max-width:100%;display:block;}
   a{color:inherit;text-decoration:none;}
   ::selection{background:var(--primary);color:#fff;}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;}
   .wrap{max-width:var(--container);margin:0 auto;padding:0 20px;}
   .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease), transform .5s var(--ease);}
   .reveal.is-visible{opacity:1;transform:translateY(0);}
@@ -43,10 +109,13 @@
   .compliance-strip{background:var(--primary-dark);color:#DDEAE5;font-size:11px;text-align:center;padding:7px 14px;}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15.5px;padding:15px 28px;border-radius:var(--radius-btn);border:none;cursor:pointer;transition:transform .15s var(--ease);}
+  .btn:active{transform:scale(.96);}
   .btn-primary{background:linear-gradient(180deg, var(--primary-light), var(--primary));color:#fff;box-shadow:0 6px 18px rgba(47,93,83,0.30);}
   .btn-primary:hover{transform:translateY(-2px);}
   .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink-soft);}
   .btn-block{width:100%;}
+
+  .progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:70;width:0%;transition:width .1s linear;}
 
   section{padding:40px 0;}
   .section-alt{background:var(--bg-alt);}
@@ -57,21 +126,27 @@
   .lede{color:var(--ink-soft);font-size:15px;max-width:420px;}
   .lede.center{margin:0 auto;text-align:center;}
   .center-wrap{text-align:center;}
+  .mini-divider{height:1px;background:var(--line);max-width:200px;margin:24px auto;}
 
   .mini-cta{display:block;text-align:center;margin-top:20px;font-weight:700;font-size:14px;color:var(--primary);}
   .mini-cta::after{content:" →";}
 
   /* ============ HERO ============ */
-  .hero{padding:36px 0 26px;}
+  .hero{padding:36px 0 26px;position:relative;}
+  .hero::before{
+    content:"";position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+    width:900px;height:500px;max-width:160vw;
+    background:radial-gradient(ellipse at center, rgba(47,93,83,0.09) 0%, rgba(47,93,83,0) 70%);
+    pointer-events:none;z-index:0;
+  }
+  .hero .hero-grid{position:relative;z-index:1;}
   .hero-grid{display:grid;grid-template-columns:1fr;text-align:center;}
   @media (min-width:960px){.hero-grid{grid-template-columns:1.05fr 0.95fr;gap:44px;text-align:left;align-items:center;}}
   .eyebrow{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:var(--primary);background:rgba(47,93,83,0.08);border:1px solid rgba(47,93,83,0.18);padding:5px 12px;border-radius:100px;margin-bottom:14px;}
   .hero h1{max-width:460px;margin:0 auto 10px;}
   @media (min-width:960px){.hero h1{margin-left:0;}}
-  .hero p.sub{font-size:15.5px;color:var(--ink-soft);max-width:380px;margin:0 auto 8px;}
+  .hero p.sub{font-size:15.5px;color:var(--ink-soft);max-width:380px;margin:0 auto 22px;}
   @media (min-width:960px){.hero p.sub{margin-left:0;}}
-  .hero .fit-line{font-size:12.5px;color:var(--ink-faint);max-width:380px;margin:0 auto 22px;}
-  @media (min-width:960px){.hero .fit-line{margin-left:0;}}
   .hero-actions{max-width:300px;margin:0 auto;}
   @media (min-width:960px){.hero-actions{max-width:none;margin:0;}}
   .hero-microcopy{font-size:11.5px;color:var(--ink-faint);margin:10px 0 0;text-align:center;}
@@ -80,7 +155,12 @@
   .hero-visual{display:none;}
   @media (min-width:960px){
     .hero-visual{display:block;position:relative;height:280px;}
-    .hv-main{position:absolute;top:6px;left:0;right:28px;bottom:28px;background:var(--bg-card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lift);overflow:hidden;animation:float-main 6s ease-in-out infinite;}
+    .hero-visual::after{
+      content:"";position:absolute;left:8%;right:22%;bottom:2px;height:24px;
+      background:radial-gradient(ellipse at center, rgba(30,43,40,0.18), transparent 72%);
+      filter:blur(8px);z-index:0;
+    }
+    .hv-main{position:absolute;top:6px;left:0;right:28px;bottom:28px;background:var(--bg-card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lift);overflow:hidden;animation:float-main 6s ease-in-out infinite;z-index:1;}
     .hv-main .chrome{background:var(--bg-alt);padding:8px 10px;display:flex;gap:5px;}
     .hv-main .chrome span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);opacity:.5;}
     .hv-main .body{padding:16px;display:grid;gap:8px;}
@@ -88,7 +168,7 @@
     .hv-main .body .line.w60{width:60%;background:var(--primary);opacity:.55;}
     .hv-main .body .card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;}
     .hv-main .body .card-row div{height:38px;border-radius:7px;background:var(--bg-alt);}
-    .hv-float{position:absolute;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-lift);padding:12px;}
+    .hv-float{position:absolute;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-lift);padding:12px;z-index:1;}
     .hv-float.f1{top:-6px;right:0;width:126px;animation:float-1 5s ease-in-out infinite;}
     .hv-float.f2{bottom:-12px;left:16px;width:146px;animation:float-2 5.6s ease-in-out infinite;}
     .hv-float .fk{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;color:var(--primary);display:block;margin-bottom:5px;}
@@ -106,33 +186,43 @@
   .story-block.is-visible .story-line{opacity:1;transform:translateY(0);}
   .story-line:nth-child(1){transition-delay:0s;}
   .story-line:nth-child(2){transition-delay:.15s;}
-  .story-line:nth-child(3){transition-delay:.3s;}
-  .story-line:nth-child(4){transition-delay:.45s;color:var(--primary);font-weight:600;}
+  .story-line:nth-child(3){transition-delay:.3s;color:var(--primary);font-weight:600;}
 
   /* ============ Problema / Solução blocks ============ */
   .slim-block{max-width:480px;margin:0 auto;text-align:center;}
 
   /* ============ Benefícios ============ */
   .benefit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px;max-width:460px;margin-left:auto;margin-right:auto;}
-  .benefit-card{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:left;}
+  .benefit-card{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:16px 14px;text-align:left;transition:transform .2s var(--ease), box-shadow .2s var(--ease);}
+  .benefit-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);}
   .benefit-card .b-icon{font-size:18px;margin-bottom:6px;display:block;}
   .benefit-card p{margin:0;font-size:13px;color:var(--ink);font-weight:600;line-height:1.35;}
 
   /* ============ Mockups (o que recebe) ============ */
   .mockup-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;}
-  .mockup-grid img{width:100%;border-radius:14px;box-shadow:var(--shadow-soft);}
+  .mockup-grid img{width:100%;border-radius:14px;box-shadow:var(--shadow-soft);transition:transform .25s var(--ease), box-shadow .25s var(--ease);}
+  .mockup-grid img:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);}
 
-  /* ============ Depoimentos ============ */
-  .testi-grid{display:grid;grid-template-columns:1fr;gap:10px;max-width:440px;margin:20px auto 0;}
-  @media (min-width:560px){.testi-grid{grid-template-columns:1fr 1fr;max-width:520px;}}
-  .testi-card{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:left;}
+  /* ============ Depoimentos (carrossel) ============ */
+  .testi-carousel{
+    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:20px 4px 4px;margin:0 -4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .testi-carousel::-webkit-scrollbar{display:none;}
+  .testi-card{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:left;
+    scroll-snap-align:center;flex:0 0 82%;max-width:320px;
+  }
+  @media (min-width:560px){.testi-card{flex:0 0 46%;}}
   .testi-stars{color:var(--accent);font-size:12px;letter-spacing:2px;margin-bottom:6px;}
   .testi-quote{font-size:13px;color:var(--ink-soft);margin:0 0 10px;}
   .testi-person{display:flex;align-items:center;gap:8px;}
   .testi-person img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--line);}
   .testi-name{font-size:12px;font-weight:700;color:var(--ink);}
   .testi-meta{font-size:10px;color:var(--ink-faint);}
-  .testi-disclaimer{text-align:center;font-size:10px;color:var(--ink-faint);margin-top:14px;}
+  .testi-dots{display:flex;justify-content:center;gap:6px;margin-top:12px;}
+  .testi-dots span{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .2s;}
+  .testi-dots span.active{background:var(--primary);}
 
   /* ============ Oferta ============ */
   .checklist-mini{list-style:none;padding:0;margin:14px auto 0;display:grid;grid-template-columns:1fr;gap:6px;max-width:360px;text-align:left;}
@@ -160,15 +250,41 @@
   .guarantee-mini{display:flex;align-items:center;gap:5px;justify-content:center;font-size:10.5px;color:var(--primary);margin-top:10px;font-weight:600;}
 
   /* ============ Garantia ============ */
-  .risk-banner{background:var(--bg-card);border:2px solid var(--primary);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;max-width:460px;margin:20px auto 0;}
-  .risk-icon{flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;font-size:18px;}
-  .risk-banner h4{font-size:14px;margin:0 0 2px;}
-  .risk-banner p{margin:0;font-size:12px;color:var(--ink-soft);}
+  .risk-banner{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;
+    display:flex;align-items:center;gap:18px;max-width:460px;margin:20px auto 0;
+    box-shadow:var(--shadow-card);position:relative;overflow:hidden;
+  }
+  .risk-banner::before{
+    content:"";position:absolute;inset:0;border-radius:18px;padding:1.5px;
+    background:linear-gradient(135deg, var(--primary), transparent 40%, transparent 60%, var(--accent));
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+  }
+  .risk-icon{
+    flex:0 0 48px;width:48px;height:48px;border-radius:50%;
+    background:linear-gradient(160deg, var(--primary-light), var(--primary));
+    display:flex;align-items:center;justify-content:center;font-size:20px;
+    box-shadow:0 6px 14px rgba(47,93,83,0.3);
+  }
+  .risk-banner h3{font-size:15px;margin:0 0 3px;font-family:var(--font-display);font-weight:600;}
+  .risk-banner p{margin:0;font-size:12.5px;color:var(--ink-soft);}
 
-  /* ============ FAQ ============ */
-  .faq-item{border-bottom:1px solid var(--line);padding:12px 0;max-width:460px;margin-left:auto;margin-right:auto;}
-  .faq-item h4{margin:0 0 4px;font-size:13.5px;font-weight:700;}
-  .faq-item p{margin:0;color:var(--ink-soft);font-size:12.5px;}
+  /* ============ FAQ (accordion) ============ */
+  .faq-item{border-bottom:1px solid var(--line);max-width:460px;margin-left:auto;margin-right:auto;}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:14px 4px;font-size:13.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+";font-family:var(--font-mono);font-weight:400;font-size:18px;color:var(--primary);
+    transition:transform .25s var(--ease);flex:0 0 auto;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item .a-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--ease);}
+  .faq-item[open] .a-wrap{grid-template-rows:1fr;}
+  .faq-item .a-wrap p{overflow:hidden;margin:0 4px 14px;color:var(--ink-soft);font-size:12.5px;}
 
   /* ============ Final CTA ============ */
   .final-cta{text-align:center;background:var(--primary-dark);color:#EAF2EF;border-radius:18px;padding:34px 22px;margin:0 20px;}
@@ -187,9 +303,18 @@
   .sticky-cta .sc-price small{display:block;font-family:var(--font-body);font-size:9.5px;color:var(--ink-faint);font-weight:400;}
   .sticky-cta .btn{padding:11px 20px;font-size:13px;}
   @media (min-width:769px){.sticky-cta{display:none;}}
+  @media (max-width:400px){
+    .wrap{padding:0 16px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
 </style>
 </head>
 <body>
+
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
   <div class="compliance-strip">Conteúdo educativo — não substitui acompanhamento médico ou nutricional.</div>
 
@@ -199,8 +324,7 @@
       <div>
         <span class="eyebrow">Começou Ozempic, Mounjaro ou Wegovy?</span>
         <h1>Você não precisa saber o que fazer. Só precisa alguém te dizendo.</h1>
-        <p class="sub">Um guia pra essas primeiras semanas — pra você parar de se perguntar e viver o tratamento em paz.</p>
-        <p class="fit-line">Sem pesquisar todo dia. Sem estudar nutrição.</p>
+        <p class="sub">Um guia pra essas primeiras semanas. Sem pesquisar todo dia. Sem estudar nutrição.</p>
 
         <div class="hero-actions">
           <a href="#oferta" class="btn btn-primary btn-block">Quero essa tranquilidade</a>
@@ -233,31 +357,23 @@
       <span class="kicker">Identifica essa cena?</span>
       <div class="story-block reveal">
         <p class="story-line">Você saiu da consulta animada.</p>
-        <p class="story-line">Chegou em casa.</p>
-        <p class="story-line">E as dúvidas começaram.</p>
+        <p class="story-line">Depois vieram as dúvidas.</p>
         <p class="story-line">Cada refeição virou uma decisão.</p>
       </div>
     </div>
   </section>
 
-  <!-- 3. O VERDADEIRO PROBLEMA -->
+  <!-- 3+4. O VERDADEIRO PROBLEMA + A SOLUÇÃO -->
   <section class="section-alt">
     <div class="wrap reveal center-wrap">
       <div class="slim-block">
         <span class="kicker">O problema real</span>
         <h2 class="center">Não é falta de informação. É não ter ninguém decidindo por você.</h2>
-        <p class="lede center">Você não quer pesquisar isso todo dia. Só quer saber o que fazer, agora.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- 4. A SOLUÇÃO -->
-  <section>
-    <div class="wrap reveal center-wrap">
+      <div class="mini-divider"></div>
       <div class="slim-block">
         <span class="kicker">Diferente de um app de registro</span>
         <h2 class="center">A gente não ajuda a registrar o tratamento. Ajuda a viver ele.</h2>
-        <p class="lede center">Apps de controle só anotam o que você já fez. Este te diz o que fazer antes de cada refeição.</p>
       </div>
       <a href="#oferta" class="mini-cta">Quero viver isso em paz</a>
     </div>
@@ -269,10 +385,10 @@
       <span class="kicker">O que muda pra você</span>
       <h2 class="center">Menos decisão. Mais tranquilidade.</h2>
       <div class="benefit-grid">
-        <div class="benefit-card"><span class="b-icon">🧘</span><p>Pare de se perguntar o que comer</p></div>
-        <div class="benefit-card"><span class="b-icon">✅</span><p>Uma resposta pronta pra cada refeição</p></div>
-        <div class="benefit-card"><span class="b-icon">🔕</span><p>Sem pesquisar isso todo santo dia</p></div>
-        <div class="benefit-card"><span class="b-icon">🌿</span><p>Mais leveza nessas primeiras semanas</p></div>
+        <div class="benefit-card"><span class="b-icon" aria-hidden="true">🧘</span><p>Pare de se perguntar o que comer</p></div>
+        <div class="benefit-card"><span class="b-icon" aria-hidden="true">✅</span><p>Uma resposta pronta pra cada refeição</p></div>
+        <div class="benefit-card"><span class="b-icon" aria-hidden="true">🔕</span><p>Sem pesquisar isso todo santo dia</p></div>
+        <div class="benefit-card"><span class="b-icon" aria-hidden="true">🌿</span><p>Mais leveza nessas primeiras semanas</p></div>
       </div>
     </div>
   </section>
@@ -284,10 +400,10 @@
       <h2 class="center">Tudo pronto pra você seguir</h2>
 
       <div class="mockup-grid">
-        <img src="images/cardapios.jpg" alt="30 cardápios ricos em proteína, fáceis de seguir">
-        <img src="images/planner.jpg" alt="Planner semanal — sua semana organizada de vez">
-        <img src="images/calculadora.jpg" alt="Calculadora de proteína — peso no campo, meta na hora">
-        <img src="images/tracker.jpg" alt="Tracker diário — aplicações e sintomas num só lugar">
+        <img src="images/cardapios.jpg" alt="30 cardápios ricos em proteína, fáceis de seguir" loading="lazy" decoding="async" width="600" height="288">
+        <img src="images/planner.jpg" alt="Planner semanal — sua semana organizada de vez" loading="lazy" decoding="async" width="600" height="275">
+        <img src="images/calculadora.jpg" alt="Calculadora de proteína — peso no campo, meta na hora" loading="lazy" decoding="async" width="600" height="301">
+        <img src="images/tracker.jpg" alt="Tracker diário — aplicações e sintomas num só lugar" loading="lazy" decoding="async" width="600" height="287">
       </div>
       <a href="#oferta" class="mini-cta">Quero acesso a tudo isso</a>
     </div>
@@ -298,7 +414,7 @@
     <div class="wrap reveal center-wrap">
       <span class="kicker">Quem já vive isso</span>
       <h2 class="center">Depoimentos de quem usa</h2>
-      <div class="testi-grid">
+      <div class="testi-carousel" id="testiCarousel">
         <div class="testi-card">
           <div class="testi-stars">★★★★★</div>
           <p class="testi-quote">"Parei de me perguntar o que comer. Já vem tudo pronto."</p>
@@ -316,6 +432,7 @@
           </div>
         </div>
       </div>
+      <div class="testi-dots" id="testiDots"><span class="active"></span><span></span></div>
     </div>
   </section>
 
@@ -360,7 +477,7 @@
             <li>Ideal pros dias sem tempo</li>
           </ul>
           <a href="#" class="btn btn-primary btn-block">Quero essa tranquilidade</a>
-          <div class="guarantee-mini">🛡️ Garantia de 7 dias</div>
+          <div class="guarantee-mini"><span aria-hidden="true">🛡️</span> Garantia de 7 dias</div>
         </div>
       </div>
       <p style="text-align:center;margin-top:14px;color:var(--ink-faint);font-size:11.5px;">Conteúdo educativo, sem promessa de resultado.</p>
@@ -373,8 +490,8 @@
       <span class="kicker">Sem risco</span>
       <h2 class="center">7 dias de garantia</h2>
       <div class="risk-banner">
-        <div class="risk-icon">🛡️</div>
-        <div><h4>Não fez sentido? Devolvemos 100%.</h4><p>Basta pedir dentro de 7 dias da compra.</p></div>
+        <div class="risk-icon" aria-hidden="true">🛡️</div>
+        <div><h3>Não fez sentido? Devolvemos 100%.</h3><p>Basta pedir dentro de 7 dias da compra.</p></div>
       </div>
     </div>
   </section>
@@ -387,9 +504,9 @@
         <h2 class="center">Antes de decidir</h2>
       </div>
       <div style="max-width:460px;margin:16px auto 0;">
-        <div class="faq-item"><h4>Isso substitui meu médico?</h4><p>Não. É educativo — o tratamento continua com seu médico.</p></div>
-        <div class="faq-item"><h4>Promete emagrecimento?</h4><p>Não. O foco é organizar sua alimentação e rotina.</p></div>
-        <div class="faq-item"><h4>Funciona pra qualquer GLP-1?</h4><p>Sim, pensado pra quem usa Ozempic, Mounjaro, Wegovy ou similar.</p></div>
+        <details class="faq-item"><summary>Isso substitui meu médico?</summary><div class="a-wrap"><p>Não. É educativo — o tratamento continua com seu médico.</p></div></details>
+        <details class="faq-item"><summary>Promete emagrecimento?</summary><div class="a-wrap"><p>Não. O foco é organizar sua alimentação e rotina.</p></div></details>
+        <details class="faq-item"><summary>Funciona pra qualquer GLP-1?</summary><div class="a-wrap"><p>Sim, pensado pra quem usa Ozempic, Mounjaro, Wegovy ou similar.</p></div></details>
       </div>
     </div>
   </section>
@@ -400,7 +517,7 @@
       <h2>Pare de pesquisar. Comece a viver o tratamento em paz.</h2>
       <p>Acesso imediato ao Guia Essencial.</p>
       <a href="#oferta" class="btn btn-primary">Quero essa tranquilidade agora</a>
-      <div class="fc-guarantee">🛡️ Garantia de 7 dias</div>
+      <div class="fc-guarantee"><span aria-hidden="true">🛡️</span> Garantia de 7 dias</div>
     </div>
   </section>
 
@@ -416,6 +533,7 @@
   </div>
 
 <script>
+  // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -423,6 +541,36 @@
     });
   }, { threshold: 0.1 });
   revealEls.forEach(el => io.observe(el));
+
+  // Reading progress bar
+  const progressBar = document.getElementById('progressBar');
+  let ticking = false;
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if(!ticking){ requestAnimationFrame(updateProgress); ticking = true; }
+  }, { passive: true });
+  updateProgress();
+
+  // Testimonial carousel dots sync
+  const carousel = document.getElementById('testiCarousel');
+  const dots = document.querySelectorAll('#testiDots span');
+  if(carousel && dots.length){
+    carousel.addEventListener('scroll', () => {
+      const idx = Math.round(carousel.scrollLeft / carousel.clientWidth);
+      dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+  }
+
+  // Respect reduced-motion preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
 </script>
 
 </body>
