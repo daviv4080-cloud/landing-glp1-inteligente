@@ -233,7 +233,7 @@
   .testi-name{font-size:12px;font-weight:700;color:var(--ink);}
   .testi-meta{font-size:10px;color:var(--ink-faint);}
   .testi-dots{display:flex;justify-content:center;gap:6px;margin-top:12px;}
-  .testi-dots span{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .2s;}
+  .testi-dots span{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .2s;cursor:pointer;padding:6px;background-clip:content-box;box-sizing:content-box;}
   .testi-dots span.active{background:var(--primary);}
 
   /* ============ Oferta ============ */
@@ -334,7 +334,7 @@
   <div class="hero wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">Começou Ozempic, Mounjaro ou Wegovy?</span>
+        <span class="eyebrow">GLP-1: Ozempic, Mounjaro ou Wegovy?</span>
         <h1>Você não precisa saber o que fazer. Só precisa alguém te dizendo.</h1>
         <p class="sub">Um guia pra essas primeiras semanas. Sem pesquisar todo dia. Sem estudar nutrição.</p>
 
@@ -451,8 +451,32 @@
             <div><div class="testi-name">Fernanda S.</div><div class="testi-meta">Plano completo</div></div>
           </div>
         </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Nos dias de enjoo, eu não sabia o que preparar. O guia trouxe opções simples."</p>
+          <div class="testi-person">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23C9962F'/%3E%3Ctext x='50' y='63' font-size='34' font-family='Inter,sans-serif' font-weight='600' text-anchor='middle' fill='white'%3EJM%3C/text%3E%3C/svg%3E" alt="Foto ilustrativa">
+            <div><div class="testi-name">Juliana M.</div><div class="testi-meta">Guia Essencial</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"O planner semanal virou parte da minha rotina. Simples de seguir."</p>
+          <div class="testi-person">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23204039'/%3E%3Ctext x='50' y='63' font-size='34' font-family='Inter,sans-serif' font-weight='600' text-anchor='middle' fill='white'%3EPA%3C/text%3E%3C/svg%3E" alt="Foto ilustrativa">
+            <div><div class="testi-name">Patrícia A.</div><div class="testi-meta">Plano completo</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"As receitas express salvaram minha semana em dias corridos."</p>
+          <div class="testi-person">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%232F5D53'/%3E%3Ctext x='50' y='63' font-size='34' font-family='Inter,sans-serif' font-weight='600' text-anchor='middle' fill='white'%3EMS%3C/text%3E%3C/svg%3E" alt="Foto ilustrativa">
+            <div><div class="testi-name">Mariana S.</div><div class="testi-meta">Plano completo</div></div>
+          </div>
+        </div>
       </div>
-      <div class="testi-dots" id="testiDots"><span class="active"></span><span></span></div>
+      <div class="testi-dots" id="testiDots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
     </div>
   </section>
 
@@ -581,11 +605,28 @@
   // Testimonial carousel dots sync
   const carousel = document.getElementById('testiCarousel');
   const dots = document.querySelectorAll('#testiDots span');
-  if(carousel && dots.length){
+  const testiCards = carousel ? carousel.querySelectorAll('.testi-card') : [];
+  if(carousel && dots.length && testiCards.length){
+    let rafPending = false;
+    function syncDots(){
+      const center = carousel.scrollLeft + carousel.clientWidth / 2;
+      let closest = 0, minDist = Infinity;
+      testiCards.forEach((card, i) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const dist = Math.abs(cardCenter - center);
+        if(dist < minDist){ minDist = dist; closest = i; }
+      });
+      dots.forEach((d,i) => d.classList.toggle('active', i === closest));
+      rafPending = false;
+    }
     carousel.addEventListener('scroll', () => {
-      const idx = Math.round(carousel.scrollLeft / carousel.clientWidth);
-      dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+      if(!rafPending){ requestAnimationFrame(syncDots); rafPending = true; }
     }, { passive: true });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        testiCards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
   }
 
   // Respect reduced-motion preference
