@@ -159,21 +159,18 @@
   .hero-actions .btn-primary{font-size:16.5px;padding:17px 30px;animation:pulse-glow-hero 3s ease-in-out infinite;}
   .hero-actions .btn-primary:hover{animation-play-state:paused;}
 
-  /* Shared device-frame look, reused by mobile-compact and desktop-collage mockups */
-  .device-frame{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
-  .device-frame .chrome{background:var(--bg-alt);padding:8px 10px;display:flex;gap:5px;}
-  .device-frame .chrome span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);opacity:.5;}
-  .device-frame .body{padding:16px;display:grid;gap:8px;}
-  .device-frame .body .line{height:8px;border-radius:4px;background:var(--bg-alt);}
-  .device-frame .body .line.w60{width:60%;background:var(--primary);opacity:.55;}
-  .device-frame .body .card-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;}
-  .device-frame .body .card-row div{height:38px;border-radius:7px;background:var(--bg-alt);}
-  .device-frame .footer-badge{padding:10px 16px 14px;font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);border-top:1px solid var(--line);}
-  .device-frame .footer-badge strong{color:var(--primary);font-size:15px;}
   @keyframes float-main{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
   /* Compact mockup — visible on mobile too, so the product is always front and center */
-  .hero-visual-mobile{margin-top:6px;max-width:300px;margin-left:auto;margin-right:auto;box-shadow:var(--shadow-lift);border-radius:16px;animation:float-main 6s ease-in-out infinite;}
+  .hero-visual-mobile{position:relative;margin-top:6px;max-width:300px;margin-left:auto;margin-right:auto;animation:float-main 6s ease-in-out infinite;}
+  .hero-visual-mobile img{width:100%;display:block;border-radius:16px;box-shadow:var(--shadow-lift);}
+  .hero-visual-mobile .hvm-badge{
+    position:absolute;bottom:-14px;left:-10px;background:var(--bg-card);border:1px solid var(--line);
+    border-radius:10px;box-shadow:var(--shadow-lift);padding:8px 10px;
+  }
+  .hero-visual-mobile .hvm-badge .fk{font-family:var(--font-mono);font-size:8.5px;text-transform:uppercase;color:var(--primary);display:block;margin-bottom:4px;}
+  .hero-visual-mobile .hvm-badge .fbars{display:flex;align-items:flex-end;gap:2.5px;height:18px;}
+  .hero-visual-mobile .hvm-badge .fbars i{width:6px;background:linear-gradient(180deg,var(--primary-light),var(--primary));border-radius:2px 2px 0 0;}
   @media (min-width:960px){.hero-visual-mobile{display:none;}}
 
   .hero-visual{display:none;}
@@ -184,15 +181,14 @@
       background:radial-gradient(ellipse at center, rgba(30,43,40,0.18), transparent 72%);
       filter:blur(8px);z-index:0;
     }
-    .hv-main{position:absolute;top:2px;left:0;right:22px;bottom:22px;box-shadow:var(--shadow-lift);animation:float-main 6s ease-in-out infinite;z-index:1;}
+    .hv-main{position:absolute;top:2px;left:0;right:22px;bottom:22px;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lift);animation:float-main 6s ease-in-out infinite;z-index:1;}
+    .hv-main img{width:100%;height:100%;object-fit:cover;display:block;}
     .hv-float{position:absolute;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-lift);padding:12px;z-index:1;}
-    .hv-float.f1{top:-6px;right:0;width:126px;animation:float-1 5s ease-in-out infinite;}
     .hv-float.f2{bottom:-12px;left:16px;width:146px;animation:float-2 5.6s ease-in-out infinite;}
     .hv-float .fk{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;color:var(--primary);display:block;margin-bottom:5px;}
     .hv-float .fv{font-family:var(--font-mono);font-size:18px;font-weight:600;}
     .hv-float .fbars{display:flex;align-items:flex-end;gap:3px;height:24px;margin-top:5px;}
     .hv-float .fbars i{flex:1;background:linear-gradient(180deg,var(--primary-light),var(--primary));border-radius:3px 3px 0 0;}
-    @keyframes float-1{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-9px) rotate(-2deg);}}
     @keyframes float-2{0%,100%{transform:translateY(0) rotate(2deg);}50%{transform:translateY(9px) rotate(2deg);}}
   }
 
@@ -354,28 +350,19 @@
         </div>
 
         <!-- Mockup compacto — visível também no mobile -->
-        <div class="hero-visual-mobile device-frame">
-          <div class="chrome"><span></span><span></span><span></span></div>
-          <div class="body">
-            <div class="line w60"></div>
-            <div class="line" style="width:85%"></div>
-            <div class="card-row"><div></div><div></div><div></div></div>
+        <div class="hero-visual-mobile">
+          <img src="images/calculadora-hero.jpg" alt="Calculadora de proteína do Programa GLP-1 Inteligente, mostrando a meta diária calculada" width="840" height="302" fetchpriority="high" decoding="async">
+          <div class="hvm-badge">
+            <span class="fk">Semana pronta</span>
+            <div class="fbars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i></div>
           </div>
-          <div class="footer-badge">Proteína hoje: <strong>92g</strong></div>
         </div>
       </div>
 
       <div class="hero-visual">
-        <div class="hv-main device-frame">
-          <div class="chrome"><span></span><span></span><span></span></div>
-          <div class="body">
-            <div class="line w60"></div>
-            <div class="line" style="width:85%"></div>
-            <div class="line" style="width:70%"></div>
-            <div class="card-row"><div></div><div></div><div></div></div>
-          </div>
+        <div class="hv-main">
+          <img src="images/calculadora-hero.jpg" alt="Calculadora de proteína do Programa GLP-1 Inteligente, mostrando a meta diária calculada" width="840" height="302" fetchpriority="high" decoding="async">
         </div>
-        <div class="hv-float f1"><span class="fk">Proteína hoje</span><span class="fv">92g</span></div>
         <div class="hv-float f2">
           <span class="fk">Semana pronta</span>
           <div class="fbars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:60%"></i></div>
